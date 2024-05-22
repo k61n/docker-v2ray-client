@@ -1,0 +1,43 @@
+{
+    "inbounds": [
+        {
+            "port": 1080,
+            "listen": "0.0.0.0",
+            "protocol": "http"
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "V2RAYSERVERIP",
+                        "port": 10086,
+                        "users": [
+                            {
+                                "id": "V2RAYSERVERUID"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        }
+    ],
+    "routing": {
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "direct"
+            }
+        ]
+    }
+}

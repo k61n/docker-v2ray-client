@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  v2ray-service:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+      args:
+        TARGETPLATFORM: "linux/arm64"
+        TAG: "v5.16.1"
+    image: v2ray-client:v5.16.1
+    container_name: v2ray-client
+    ports:
+      - "1080:1080"
+    environment:
+      - V2RAYSERVERIP=<IP>
+      - V2RAYSERVERUID=<UID>
+    volumes:
+      - ./files/etc/v2ray/config.json:/etc/v2ray/config.json
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+        "
+        sed -i -e "s/V2RAYSERVERIP/$$V2RAYSERVERIP/g" /etc/v2ray/config.json
+        sed -i -e "s/V2RAYSERVERUID/$$V2RAYSERVERUID/g" /etc/v2ray/config.json
+        /usr/bin/v2ray run -c /etc/v2ray/config.json
+        "
+    restart: unless-stopped
