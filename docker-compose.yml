@@ -16,7 +16,7 @@ services:
       - V2RAYSERVERIP=<IP>
       - V2RAYSERVERUID=<UID>
     volumes:
-      - ./files/etc/v2ray/config.json:/etc/v2ray/config.json
+      - ./files/etc/v2ray:/etc/v2ray
     entrypoint: [ '/bin/sh', '-c' ]
     command: |
         "
