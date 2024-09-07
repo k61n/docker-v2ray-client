@@ -3,7 +3,7 @@
         {
             "port": 1080,
             "listen": "0.0.0.0",
-            "protocol": "http"
+            "protocol": "socks"
         }
     ],
     "outbounds": [
