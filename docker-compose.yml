@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
       args:
         TARGETPLATFORM: "linux/arm64"
-        TAG: "v5.16.1"
-    image: v2ray-client:v5.16.1
+        TAG: "v5.17.1"
+    image: v2ray-client:v5.17.1
     container_name: v2ray-client
     ports:
       - "1080:1080"
