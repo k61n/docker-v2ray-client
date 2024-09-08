@@ -25,3 +25,29 @@ services:
         /usr/bin/v2ray run -c /etc/v2ray/config.json
         "
     restart: unless-stopped
+    networks:
+      mikonet:
+        ipv4_address: 192.168.0.2
+
+  redsocks:
+    build:
+      context: ./redsocks-docker
+      dockerfile: Dockerfile
+    image: redsocks:latest
+    container_name: redsocks
+    network_mode: host
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    entrypoint: [ "/usr/local/bin/redsocks.sh", "192.168.0.2", "1080" ]
+#    networks:
+#      mikonet:
+#        ipv4_address: 192.168.0.3
+
+networks:
+  mikonet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
+          gateway: 192.168.0.1
