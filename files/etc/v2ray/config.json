@@ -3,7 +3,11 @@
         {
             "port": 1080,
             "listen": "0.0.0.0",
-            "protocol": "socks"
+            "protocol": "socks",
+            "settings": {
+                "udp": true,
+                "ip": "0.0.0.0"
+            }
         }
     ],
     "outbounds": [
