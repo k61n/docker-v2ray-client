@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  v2ray-service:
+  v2ray-proxy:
     build:
       context: ./docker
       dockerfile: Dockerfile
       args:
         TARGETPLATFORM: "linux/arm64"
         TAG: "v5.17.1"
-    image: v2ray-client:v5.17.1
-    container_name: v2ray-client
+    image: v2ray-proxy:v5.17.1
+    container_name: v2ray-proxy
     ports:
       - "1080:1080"
     environment:

@@ -1,3 +1,6 @@
 [submodule "docker"]
 	path = docker
 	url = https://github.com/v2fly/docker.git
+[submodule "redsocks-docker"]
+	path = redsocks-docker
+	url = https://github.com/k61n/redsocks-docker.git
